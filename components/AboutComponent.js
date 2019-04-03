@@ -38,15 +38,13 @@ class About extends Component {
 	render() {
 		const renderLeaders = ({ item, index }) => {
 			return (
-				<Card title="Corporate Leadership">
-					<ListItem
-						key={index}
-						title={item.name}
-						subtitle={item.description}
-						hideChevron={true}
-						leftAvatar={{ source: require('./images/alberto.png') }}
-					/>
-				</Card>
+				<ListItem
+					key={index}
+					title={item.name}
+					subtitle={item.description}
+					hideChevron={true}
+					leftAvatar={{ source: require('./images/alberto.png') }}
+				/>
 			)
 		}
 
@@ -54,11 +52,13 @@ class About extends Component {
 		return (
 			<ScrollView>
 				<History />
-				<FlatList
-					data={this.state.leaders}
-					renderItem={renderLeaders}
-					keyExtractor={item => item.id.toString()}
-				/>
+				<Card title="Corporate Leadership">
+					<FlatList
+						data={this.state.leaders}
+						renderItem={renderLeaders}
+						keyExtractor={item => item.id.toString()}
+					/>
+				</Card>
 			</ScrollView>
 		)
 	}
