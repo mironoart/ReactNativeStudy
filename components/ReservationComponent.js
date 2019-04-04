@@ -8,7 +8,6 @@ import {
 	Button,
 	Modal
 } from 'react-native'
-import { Card } from 'react-native-elements'
 
 import DatePicker from 'react-native-datepicker'
 import { ScrollView } from 'react-native-gesture-handler'
