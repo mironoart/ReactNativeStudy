@@ -10,7 +10,8 @@ import {
 	StyleSheet,
 	Button,
 	Alert,
-	PanResponder
+	PanResponder,
+	Share
 } from 'react-native'
 
 import { connect } from 'react-redux'
@@ -72,6 +73,19 @@ function RenderDish(props) {
 	const recognizeDrag = ({ moveX, moveY, dx, dy }) => {
 		if (dx < -200) return true
 		else return false
+	}
+
+	const shareDish = (title, message, url) => {
+		Share.share(
+			{
+				title: title,
+				message: title + ': ' + message + ' ' + url,
+				url: url
+			},
+			{
+				dialogTitle: 'Share ' + title
+			}
+		)
 	}
 
 	const panResponder = PanResponder.create({
@@ -139,6 +153,17 @@ function RenderDish(props) {
 							color="#512DA8"
 							type="font-awesome"
 							onPress={() => props.toggleModal()}
+						/>
+						<Icon
+							raised
+							reverse
+							name="share"
+							type="font-awesome"
+							color="#51D2A8"
+							style={styles.cardItem}
+							onPress={() =>
+								shareDish(dish.name, dish.description, baseUrl + dish.image)
+							}
 						/>
 					</View>
 				</Card>
